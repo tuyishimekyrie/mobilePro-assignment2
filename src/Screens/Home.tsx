@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import DrawerNavigation from "../routes/DrawerNavigation";
+import { useTheme } from "../context/ThemeContext";
 
 const HomeScreen = () => {
+  const { theme } = useTheme();
+  console.log("Current Theme:", theme); // Log the current theme values
+
   return (
-    <View style={styles.home}>
-      {/* <NavigationContainer> */}
-        <DrawerNavigation />
-      {/* </NavigationContainer> */}
+    <View style={[styles.home, { backgroundColor: theme.background }]}>
+      <DrawerNavigation />
     </View>
   );
 };

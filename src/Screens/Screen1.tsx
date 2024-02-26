@@ -1,24 +1,26 @@
-import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { useTheme } from "../context/ThemeContext";
 
 const Screen1 = ({ ...props }) => {
-  const { title, content,img } = props;
+  const { title, content, img } = props;
+  const { theme } = useTheme();
+
   return (
-    <View style={styles.generic}>
+    <View style={[styles.generic, { backgroundColor: theme.background }]}>
       <View style={styles.section}>
-        <Text style={styles.title}>{title || "The Future of Typescript"} </Text>
+        <Text style={[styles.title, { color: theme.text }]}>
+          {title || "The Future of Typescript"}
+        </Text>
       </View>
       <View style={styles.section}>
-        {/*  */}
         {img ? (
           <ImageBackground
             source={{
               uri: img,
             }}
             style={{ width: "100%", height: 200 }}
-          >
-            {/* Optional: You can add additional components inside the ImageBackground if needed */}
-          </ImageBackground>
+          />
         ) : (
           <ImageBackground
             source={{
@@ -29,7 +31,7 @@ const Screen1 = ({ ...props }) => {
         )}
       </View>
       <View style={styles.section}>
-        <Text style={styles.content}>
+        <Text style={[styles.content, { color: theme.text }]}>
           {content ||
             `TypeScript is a strongly typed superset of JavaScript developed by Microsoft. It adds static typing to the dynamic nature of JavaScript, providing developers with tools for building more robust and scalable applications. Here's a detailed description of `}
         </Text>
@@ -49,14 +51,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "700",
-    color: "#06b6d4",
   },
   content: {
     fontSize: 18,
     fontWeight: "400",
-    marginBottom:20
+    marginBottom: 20,
   },
   section: {
     padding: 15,
-  }
+  },
 });

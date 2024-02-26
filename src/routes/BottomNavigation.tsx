@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../Screens/Home";
 import AboutUsScreen from "../Screens/AboutUs";
 import CalculatorScreen from "../Screens/Calculator";
+import ContactScreen from "../Screens/Contact"; // Import Contact screen
+import GalleryScreen from "../Screens/Gallery"; // Import Gallery screen
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
@@ -24,7 +25,6 @@ const BottomNavigation = () => {
         component={HomeScreen}
         options={{
           tabBarLabel: "Home",
-          title: "xxx",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -45,7 +45,7 @@ const BottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="About Us"
+        name="AboutUs"
         component={AboutUsScreen}
         options={{
           tabBarLabel: "About Us",
@@ -58,10 +58,28 @@ const BottomNavigation = () => {
           ),
         }}
       />
+      <Tab.Screen
+        name="Contact"
+        component={ContactScreen}
+        options={{
+          tabBarLabel: "Contact",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="contacts" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Gallery"
+        component={GalleryScreen}
+        options={{
+          tabBarLabel: "Gallery",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="image" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
 
 export default BottomNavigation;
-
-const styles = StyleSheet.create({});
